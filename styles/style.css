@@ -269,4 +269,25 @@ body {
   font-size: 12px;
   float: left;
   line-height: 11px;
+}
+
+@media only screen and (min-width: 1550px) {
+  .left {
+    max-width: 600px;
+  }
+  .right {
+    max-width: 600px;
+  }
+  .count-title1 {
+    font-size: 350px;
+  }
+  .count-title2 {
+    font-size: 350px;
+  }
+  .title-team-2 {
+    font-size: 120px;
+  }
+  .title-team-1 {
+    font-size: 120px;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -14,14 +14,14 @@
   justify-content: space-between;
 }
 .left {
-  max-width: 500px;
+  max-width: 350px;
   background-color: rgb(215, 203, 203);
   width: 100%;
   position: relative;
   height: 100vh;
 }
 .right {
-  max-width: 500px;
+  max-width: 350px;
   position: relative;
   background-color: rgb(85, 56, 231);
   width: 100%;
@@ -60,7 +60,9 @@ body {
   &::placeholder {
     color: #fff;
   }
-  &:focus{outline: none;}
+  &:focus {
+    outline: none;
+  }
   padding: 0.2rem 0rem;
 }
 .input-2 {
@@ -70,26 +72,26 @@ body {
   &::placeholder {
     color: #fff;
   }
-  &:focus{
+  &:focus {
     outline: none;
   }
   padding: 0.2rem 0rem;
 }
-.title-team-1{
+.title-team-1 {
   position: absolute;
   left: 50% !important;
   color: #fff;
   top: 4%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   display: none;
   left: 2%;
 }
-.title-team-2{
+.title-team-2 {
   position: absolute;
   color: #fff;
   left: 50% !important;
   top: 4%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   display: none;
   top: 4%;
 }
@@ -251,5 +253,25 @@ body {
     font-size: 12px;
     float: left;
     line-height: 11px;
+  }
+}
+@media only screen and (min-width: 1550px) {
+  .left {
+    max-width: 600px;
+  }
+  .right {
+    max-width: 600px;
+  }
+  .count-title1 {
+    font-size: 350px;
+  }
+  .count-title2 {
+    font-size: 350px;
+  }
+  .title-team-2 {
+    font-size: 120px;
+  }
+  .title-team-1 {
+    font-size: 120px;
   }
 }
