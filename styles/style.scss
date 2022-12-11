@@ -275,3 +275,17 @@ body {
     font-size: 120px;
   }
 }
+@media only screen and (min-width: 2300px) {
+  .left {
+    max-width: 850px;
+  }
+  .right {
+    max-width: 850px;
+  }
+  .title-team-2 {
+    font-size: 75px;
+  }
+  .title-team-1 {
+    font-size: 75px;
+  }
+}
