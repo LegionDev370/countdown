@@ -14,6 +14,9 @@ let title1 = document.querySelector(".title-team-1");
 let title2 = document.querySelector(".title-team-2");
 let btnSave1 = document.querySelector(".btn-save1");
 let btnSave2 = document.querySelector(".btn-save2");
+let audio = new Audio();
+let src = "../files/the-clock-strickes-twelve-o-clock-nature-sounds-7806.mp3";
+audio.src = src;
 let minute = 0;
 let countNumber1 = 0;
 let countNumber2 = 0;
@@ -64,7 +67,7 @@ function decrement2() {
     ? localStorage.getItem("count2")
     : 0;
   let counted2 = Number(countNumber2);
-  counted2--
+  counted2--;
   window.localStorage.setItem("count2", counted2);
   count2.innerHTML = counted2;
   if (counted2 < 0) {
@@ -128,7 +131,6 @@ function initTimer(t) {
   function updateTimer() {
     var timestr;
     var date = new Date();
-
     date.setHours(0);
     date.setMinutes(time.min);
     date.setSeconds(time.sec);
@@ -139,6 +141,20 @@ function initTimer(t) {
 
     time.min = tempsplit[1];
     time.sec = tempsplit[2];
+    if (time.sec === "20") {
+      audio.play();
+    }
+    if (time.sec === "15") {
+      audio.pause();
+      audio.currentTime = 0
+    }
+    if (time.sec === "10") {
+      audio.play()
+    }
+    if (time.sec === "05") {
+      audio.pause();
+      audio.currentTime = 0
+    }
 
     timestr = time.min + time.sec;
     timeNumbers = timestr.split("");
