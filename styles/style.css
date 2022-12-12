@@ -30,6 +30,18 @@
   height: 100vh;
 }
 
+.edit-btn1 {
+  position: absolute;
+  top: 1%;
+  left: 85%;
+}
+
+.edit-btn2 {
+  position: absolute;
+  top: 1%;
+  left: 85%;
+}
+
 body {
   background: #2c3e50 !important;
   color: white;
@@ -102,7 +114,7 @@ body {
   position: absolute;
   left: 50% !important;
   color: #fff;
-  top: 4%;
+  top: 13%;
   transform: translate(-50%, -50%);
   display: none;
   left: 2%;
@@ -112,10 +124,9 @@ body {
   position: absolute;
   color: #fff;
   left: 50% !important;
-  top: 4%;
+  top: 13%;
   transform: translate(-50%, -50%);
   display: none;
-  top: 4%;
 }
 
 .left {

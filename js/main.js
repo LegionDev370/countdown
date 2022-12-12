@@ -14,25 +14,57 @@ let title1 = document.querySelector(".title-team-1");
 let title2 = document.querySelector(".title-team-2");
 let btnSave1 = document.querySelector(".btn-save1");
 let btnSave2 = document.querySelector(".btn-save2");
-let audio = new Audio();
-let src = "../files/the-clock-strickes-twelve-o-clock-nature-sounds-7806.mp3";
-audio.src = src;
+let editBtn1 = document.querySelector(".edit-btn1");
+let editBtn2 = document.querySelector(".edit-btn2");
+let audio1 = new Audio();
+let audio2 = new Audio();
+let src1 = "../files/Interval).mp3";
+let src2 = "../files/OXIRI TUT.mp3";
+audio1.src = src1;
+audio2.src = src2;
 let minute = 0;
 let countNumber1 = 0;
 let countNumber2 = 0;
+editBtn1.onclick = function () {
+  window.localStorage.removeItem("title1");
+  title1.style.display = "none";
+  div1.style.display = "block";
+  editBtn1.style.display = "none";
+  input1.value = "";
+};
+editBtn2.onclick = function () {
+  window.localStorage.removeItem("title2");
+  title2.style.display = "none";
+  div2.style.display = "block";
+  editBtn2.style.display = "none";
+  input2.value = "";
+};
 
 btnSave1.onclick = function () {
   let value = input1.value.trim();
+  window.localStorage.setItem("title1", value);
   title1.innerHTML = value;
   title1.style.display = "block";
   div1.style.display = "none";
+  editBtn1.style.display = "block";
 };
+let titleOne = window.localStorage.getItem("title1");
+title1.innerHTML = titleOne ? titleOne : "";
+titleOne ? (title1.style.display = "block") : "none";
+titleOne ? (div1.style.display = "none") : "block";
 btnSave2.onclick = function () {
   let value = input2.value.trim();
+  window.localStorage.setItem("title2", value);
   title2.innerHTML = value;
   title2.style.display = "block";
   div2.style.display = "none";
+  editBtn2.style.display = "block";
 };
+input2.value = "";
+let titleTwo = window.localStorage.getItem("title2");
+title2.innerHTML = titleTwo ? titleTwo : "";
+titleTwo ? (div2.style.display = "none") : "block";
+titleTwo ? (title2.style.display = "block") : "none";
 
 select.onchange = function (event) {
   return (minute = Number(event.target.value));
@@ -40,9 +72,15 @@ select.onchange = function (event) {
 btnStart.onclick = function () {
   initTimer(`0${minute}:00`); // other ways --> "0:15" "03:5" "5:2"
 };
+titleOne ? (editBtn1.style.display = "block") : "none";
 btnRes.onclick = function () {
+  editBtn1.style.display = "none";
+  editBtn2.style.display = "none";
   window.location.reload();
-};
+}
+
+titleOne ? editBtn1.style.display = "block" : editBtn1.style.display = "none"
+titleTwo ? editBtn2.style.display = "block" : editBtn2.style.display = "none"
 decrementBtn1.onclick = function () {
   decrement1();
 };
@@ -85,6 +123,7 @@ count2.onclick = function () {
 };
 let getItem1 = localStorage.getItem("count1");
 let getItem2 = localStorage.getItem("count2");
+
 function increment1() {
   countNumber1 = localStorage.getItem("count1")
     ? localStorage.getItem("count1")
@@ -95,6 +134,7 @@ function increment1() {
   count1.innerHTML = counted;
 }
 count1.innerHTML = getItem1 ? getItem1 : 0;
+
 function increment2() {
   countNumber2 = localStorage.getItem("count2")
     ? localStorage.getItem("count2")
@@ -142,21 +182,20 @@ function initTimer(t) {
     var tempsplit = temp[0].split(":");
 
     time.min = tempsplit[1];
-    console.log(time.min)
     time.sec = tempsplit[2];
-    if (time.sec === "20" && Number(time.min[1] <= 0)) {
-      audio.play();
+    if (time.sec === "13" && Number(time.min[1] <= 0)) {
+      audio1.play();
     }
-    if (time.sec === "15" && Number(time.min[1] <= 0)) {
-      audio.pause();
-      audio.currentTime = 0
+    if (time.sec === "11" && Number(time.min[1] <= 0)) {
+      audio1.pause();
+      audio1.currentTime = 0;
     }
-    if (time.sec === "10" && Number(time.min[1] <= 0)) {
-      audio.play()
+    if (time.sec === "02" && Number(time.min[1] <= 0)) {
+      audio2.play();
     }
-    if (time.sec === "05" && Number(time.min[1] <= 0)) {
-      audio.pause();
-      audio.currentTime = 0
+    if (time.sec === "01" && Number(time.min[1] <= 0)) {
+      audio2.pause();
+      audio2.currentTime = 0;
     }
 
     timestr = time.min + time.sec;
