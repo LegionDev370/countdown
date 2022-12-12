@@ -59,6 +59,7 @@ function decrement1() {
   count1.innerHTML = counted1;
   if (counted1 < 0) {
     counted1 = 0;
+    window.localStorage.setItem("count1", counted1);
     count1.innerHTML = counted1;
   }
 }
@@ -72,6 +73,7 @@ function decrement2() {
   count2.innerHTML = counted2;
   if (counted2 < 0) {
     counted2 = 0;
+    window.localStorage.setItem("count2", counted2);
     count2.innerHTML = counted2;
   }
 }
@@ -140,18 +142,19 @@ function initTimer(t) {
     var tempsplit = temp[0].split(":");
 
     time.min = tempsplit[1];
+    console.log(time.min)
     time.sec = tempsplit[2];
-    if (time.sec === "20") {
+    if (time.sec === "20" && Number(time.min[1] <= 0)) {
       audio.play();
     }
-    if (time.sec === "15") {
+    if (time.sec === "15" && Number(time.min[1] <= 0)) {
       audio.pause();
       audio.currentTime = 0
     }
-    if (time.sec === "10") {
+    if (time.sec === "10" && Number(time.min[1] <= 0)) {
       audio.play()
     }
-    if (time.sec === "05") {
+    if (time.sec === "05" && Number(time.min[1] <= 0)) {
       audio.pause();
       audio.currentTime = 0
     }
