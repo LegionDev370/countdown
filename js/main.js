@@ -6,30 +6,30 @@ let count1 = document.querySelector(".count-title1");
 let count2 = document.querySelector(".count-title2");
 let decrementBtn1 = document.querySelector(".btn-decrement1");
 let decrementBtn2 = document.querySelector(".btn-decrement2");
-let input1 = document.querySelector(".input-1")
-let input2 = document.querySelector(".input-2")
-let div1 = document.querySelector(".input1")
-let div2 = document.querySelector(".input2")
-let title1 = document.querySelector(".title-team-1")
-let title2 = document.querySelector(".title-team-2")
-let btnSave1 = document.querySelector(".btn-save1")
-let btnSave2 = document.querySelector(".btn-save2")
+let input1 = document.querySelector(".input-1");
+let input2 = document.querySelector(".input-2");
+let div1 = document.querySelector(".input1");
+let div2 = document.querySelector(".input2");
+let title1 = document.querySelector(".title-team-1");
+let title2 = document.querySelector(".title-team-2");
+let btnSave1 = document.querySelector(".btn-save1");
+let btnSave2 = document.querySelector(".btn-save2");
 let minute = 0;
 let countNumber1 = 0;
 let countNumber2 = 0;
 
-btnSave1.onclick = function(){
-  let value = input1.value.trim()
-  title1.innerHTML = value
-  title1.style.display = "block"
-  div1.style.display = "none"
-}
-btnSave2.onclick = function(){
-  let value = input2.value.trim()
-  title2.innerHTML = value
-  title2.style.display = "block"
-  div2.style.display = "none" 
-}
+btnSave1.onclick = function () {
+  let value = input1.value.trim();
+  title1.innerHTML = value;
+  title1.style.display = "block";
+  div1.style.display = "none";
+};
+btnSave2.onclick = function () {
+  let value = input2.value.trim();
+  title2.innerHTML = value;
+  title2.style.display = "block";
+  div2.style.display = "none";
+};
 
 select.onchange = function (event) {
   return (minute = Number(event.target.value));
@@ -37,9 +37,9 @@ select.onchange = function (event) {
 btnStart.onclick = function () {
   initTimer(`0${minute}:00`); // other ways --> "0:15" "03:5" "5:2"
 };
-btnRes.onclick = function(){
-  window.location.reload()
-}
+btnRes.onclick = function () {
+  window.location.reload();
+};
 decrementBtn1.onclick = function () {
   decrement1();
 };
@@ -47,19 +47,29 @@ decrementBtn2.onclick = function () {
   decrement2();
 };
 function decrement1() {
-  countNumber1--;
-  count1.innerHTML = countNumber1;
-  if (countNumber1 < 0) {
-    countNumber1 = 0;
-    count1.innerHTML = countNumber1;
+  countNumber1 = localStorage.getItem("count1")
+    ? localStorage.getItem("count1")
+    : 0;
+  let counted1 = Number(countNumber1);
+  counted1--;
+  window.localStorage.setItem("count1", counted1);
+  count1.innerHTML = counted1;
+  if (counted1 < 0) {
+    counted1 = 0;
+    count1.innerHTML = counted1;
   }
 }
 function decrement2() {
-  countNumber2--;
-  count2.innerHTML = countNumber2;
-  if(countNumber2 < 0){
-    countNumber2 = 0
-    count2.innerHTML = countNumber2
+  countNumber2 = localStorage.getItem("count2")
+    ? localStorage.getItem("count2")
+    : 0;
+  let counted2 = Number(countNumber2);
+  counted2--
+  window.localStorage.setItem("count2", counted2);
+  count2.innerHTML = counted2;
+  if (counted2 < 0) {
+    counted2 = 0;
+    count2.innerHTML = counted2;
   }
 }
 count1.onclick = function () {
@@ -68,14 +78,28 @@ count1.onclick = function () {
 count2.onclick = function () {
   increment2();
 };
+let getItem1 = localStorage.getItem("count1");
+let getItem2 = localStorage.getItem("count2");
 function increment1() {
-  countNumber1++;
-  count1.innerHTML = countNumber1;
+  countNumber1 = localStorage.getItem("count1")
+    ? localStorage.getItem("count1")
+    : 0;
+  let counted = Number(countNumber1);
+  counted++;
+  window.localStorage.setItem("count1", counted);
+  count1.innerHTML = counted;
 }
+count1.innerHTML = getItem1 ? getItem1 : 0;
 function increment2() {
-  countNumber2++;
-  count2.innerHTML = countNumber2;
+  countNumber2 = localStorage.getItem("count2")
+    ? localStorage.getItem("count2")
+    : 0;
+  let counted2 = Number(countNumber2);
+  counted2++;
+  window.localStorage.setItem("count2", counted2);
+  count2.innerHTML = counted2;
 }
+count2.innerHTML = getItem2 ? getItem2 : 0;
 
 var reloadBtn = document.querySelector(".reload");
 var timerEl = document.querySelector(".timer");
